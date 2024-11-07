@@ -1,0 +1,14 @@
+# 使用 Ubuntu 镜像作为基础镜像
+FROM ubuntu:latest
+
+# 安装 Nginx
+RUN apt-get update && apt-get install -y nginx
+
+# 设置 Nginx 配置（可以根据需要自定义）
+COPY ./default-nginx.conf /etc/nginx/sites-available/default
+
+# 开放端口 8080
+EXPOSE 12580
+
+# 启动 Nginx 服务
+CMD ["nginx", "-g", "daemon off;"]
